@@ -22,13 +22,15 @@ window.addEventListener('key', (e) => {
 		case 'ArrowRight' : pan.style.left = parseInt(pan.style.left) + vzdalenost + 'px' ; break;
 		case 'ArrowUp' : pan.style.top = parseInt(pan.style.top) - vzdalenost + 'px' ; break;
 		case 'ArrowDown' : pan.style.top = parseInt(pan.style.top) + vzdalenost + 'px'; break;
+		console.log('text2');
 	}
 });
 
 
 function PohybJedna() {
-    let pohni = document.getElementById('#panacek');
+    let pohni = document.querySelector('#panacek');
 
     pohni.style.left = '420px';
     pohni.style.top = '260px';
+	console.log('text');
 }
