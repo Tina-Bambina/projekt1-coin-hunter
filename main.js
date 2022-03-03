@@ -1,12 +1,4 @@
-// toto budeš potřebovat později
-/*
-if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-	// panacek a mince se prekryvaji
-}
-*/
-
-
-// panacek - ovladani :
+// PANACEK - ovladani :
 let vzdalenost = 50;
 let pan = document.querySelector('#panacek');
 
@@ -16,7 +8,8 @@ window.addEventListener('nacteni', () => {
 	pan.style.top = 0;
 })
 
-window.addEventListener('key', (e) => {
+window.addEventListener('keydown', (e) => {
+	let pan = document.querySelector('#panacek');
 	switch(e.key){
 		case 'ArrowLeft' : pan.style.left = parseInt(pan.style.left) - vzdalenost + 'px' ; break;
 		case 'ArrowRight' : pan.style.left = parseInt(pan.style.left) + vzdalenost + 'px' ; break;
@@ -36,7 +29,7 @@ function PohybJedna() {
 }
 
 
-// mince - nahodna lokace - pouzito ze stack overflow
+// MINCE - nahodna lokace - pouzito ze stack overflow
 function getRandomPosition(element) {
 	var x = document.body.offsetHeight-element.clientHeight;
 	var y = document.body.offsetWidth-element.clientWidth;
@@ -53,3 +46,13 @@ window.onload = function() {
 	img.style.top = xy[0] + 'px';
 	img.style.left = xy[1] + 'px';
 }
+
+//SKORE
+// toto budeš potřebovat později
+/*
+if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+	// panacek a mince se prekryvaji
+	
+}
+*/
+let noveSkore = document.querySelector('#score') = parseInt('#score') + 1;
