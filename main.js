@@ -6,7 +6,9 @@ let skore = document.querySelector('#score');
 window.innerHeight = 1080; // jinak? kam? cisla dobre? panacek stale vyjizdi.
 window.innerWidth = 1920;
 
-/*let hudba = document.getElementById('hudba');
+/*
+BONUS - ale musi se zaradit do nejake spousteci funkce, asi load cele stranky.
+let hudba = document.getElementById('hudba');
 hudba.play();
 */
 
@@ -61,22 +63,24 @@ function Shoda()
 if ((pan.style.top = mince.style.top) && (pan.style.left = mince.style.left)) 
 	{
 		console.log('shoda');
-		skore = parseInt('#score') + 1;   //toto nedela co by melo - proc? protoze v textu mam napsano 0. Ale neumim to prepsat na to, aby to aktvine bralo aktivni hodnotu
+		skore = parseInt('#score') + 1; //toto nedela co by melo - proc? protoze v textu mam napsano 0. Ale neumim to prepsat na to, aby to aktvine bralo aktivni hodnotu
+		console.log('#score');  
 		let shoda = document.getElementById('mince');
 		shoda.play();
+		//tady je nutno i nastavit, aby se mince pregenrovala, ale jak jednoduse?
 	}
 }
 
 
-// toto budeš potřebovat později
+// toto budeš potřebovat později 
 /*
 if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
 	// panacek a mince se prekryvaji
 	
 }
-*/
+*/    // .... tento vas priklad neumim apolikovat na to svoje, sla jsem jednodussi cestou, a proto mi to nevychazi
 
-function Vitezstvi()
+function Vitezstvi() 
 {
 	if (skore = 5)
 	{	
@@ -84,3 +88,6 @@ function Vitezstvi()
 	vitez.play();
 	}
 }
+
+
+//funkce Shoda i Vitezstvi jsou prozatim ciste teoreticke. Tak nejak bych si je predstavovala, ale zatim mi nefunguji.
