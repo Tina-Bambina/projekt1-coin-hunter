@@ -9,22 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
+<body onkeydown = "PanacekPohyb(event)" 
+onload = "NacteniStranky()" >
 
-
+/<!---onload = "Hudba()" -->
 	
 	<img id="panacek" src="obrazky/panacek.png" alt="Panáček">
 	
 	<!--- <img id="mince" src="obrazky/mince.png" alt="Mince"> -->
 	<img id="mince" src="obrazky/mince.png" alt="Mince">
-	<div id="score">0</div>
+	<div id="score" >X</div>
 
 	<audio id="hudba" src="zvuky/hudba.mp3" autoplay loop></audio>
 
 	<audio id="zvukmince" src="zvuky/mince.mp3"></audio>
 
 	<audio id="zvukfanfara" src="zvuky/fanfara.mp3"></audio>
-	
+
 	<button onclick="PohybJedna()">Pokus pohybu pan</button> <!--//test reakce - potom vymazu - stejne jako jednorozec-->
 	<button onclick="PohybDva()">Pokus pohybu mince</button> <!--//test reakce - potom vymazu - stejne jako jednorozec-->
 
