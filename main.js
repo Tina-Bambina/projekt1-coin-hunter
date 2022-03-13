@@ -1,67 +1,43 @@
 //ZAKLADNI promenne: 
-let skore = 0
+let skore = 0;
+
 let vzdalenost = 50;
 let pan = document.querySelector('#panacek');
-let panacekX;
-let panacekY;
-let panacekSirka;
-let panacekVyska;
+let panacekX = 0;
+let panacekY = 0;
+let panacekSirka = 50;
+let panacekVyska = 50;
 
 let mince = document.querySelector('#mince');
-let minceX;
-let minceY;
-let minceSirka;
-let minceVyska;
+let minceX = 0;
+let minceY = 0;
+let minceSirka = 20;
+let minceVyska = 20;
 
-//let skore = document.querySelector('#score');
-
-let limitY = window.innerHeight; // jinak? kam? cisla dobre? panacek stale vyjizdi.
+let limitY = window.innerHeight; 
 let limitX = window.innerWidth;
 
-// toto budeš potřebovat později 
-/*
-function Kolize()
-{
-	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-		// panacek a mince se prekryvaji
-		
-	}
-}
-*/    // .... tento vas priklad neumim apolikovat na to svoje, sla jsem jednodussi cestou, a proto mi to nevychazi
-
-
-//BASIC FUNKCE - volani
 NacteniStranky();
-
-
-//POHYBOVE FUNKCE - volani
-
-
-
-//VSECHNY FUNKCE - deklarace
 
 function NacteniStranky()
 {
-	//Hudba();
+	//Hudba(); //Neslo mi dat, aby to hralo od zacatku po loadu. Psalo to, ze je potreba interact first, musela jsem to dat do tlacitka, aby se hudba spustila :( 
 	zobrazSkore();
 	PanacekVychozi();
-	PolohaMince()
+	PolohaMince();
 }
 
 function Hudba()
 {
-	let hudba = document.querySelector('#hudba');
-	hudba.play();
-	hudba.volume = 0.5;
+	document.getElementById('hudba').play();
 }
 
 function zobrazSkore()
 {
   document.querySelector("#score").innerHTML = skore;
-  console.log(skore);
 }
 
-// PANACEK - ovladani :
+// 2 VYCHOZI FUNKCE PRO PANACKA A MINCI:
 function PanacekVychozi()
 {
 	window.addEventListener('load', () => {
@@ -71,101 +47,71 @@ function PanacekVychozi()
 	})
 }
 
-function PanacekPohyb(event) // tady to nesedi na PanacekMove, zblaznilo se to. 
-{
-	panacekX = parseInt(pan.style.left);
-	panacekY = parseInt(pan.style.top);
-	console.log(panacekX +panacekSirka); //delete
-
-	if (event.key === "ArrowLeft" && panacekX-vzdalenost>=0)
-	{
-		console.log('vlevo');
-				pan.style.left = panacekX -vzdalenost +"px";
-	
-	}else if (event.key === "ArrowRight" && panacekX+vzdalenost<limitX)
-	{
-		console.log('vpravo');
-		pan.style.left = panacekX +vzdalenost +"px";
-		
-	}else if (event.key === "ArrowUp" && panacekY-vzdalenost>=0)
-	{
-		console.log('nahoru');
-		pan.style.top = panacekY -vzdalenost +"px";
-	
-	}else if (event.key === "ArrowDown" && panacekY+vzdalenost<=limitY)
-	{
-		console.log('dolu');
-		pan.style.top = panacekY +vzdalenost +"px";
-	
-	}
-
-	//if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) 
-	//{mince.style.display='none'};
-}
-
-
-//test reakce - potom vymazu - stejne jako jednorozec
-function PohybJedna() {
-   // let pan = document.querySelector('#panacek');
-
-    pan.style.left = '120px';
-    pan.style.top = '660px';
-	console.log('test panak');
-}
-
-function PohybDva() {
-  //  let mince = document.querySelector('#mince');
-
-    mince.style.left = '120px';
-    mince.style.top = '660px';
-	console.log('test mince'); //tady kdyz klikneme po panackovi, tak maji stejne souradnice, ale nevypise to console.log.shoda viz nize lekce SKORE
-	
-}
-
-// MINCE - nahodna lokace 
 function PolohaMince()
 {
 	window.addEventListener('load', () => {
 		mince.style.position = 'absolute';
-		mince.style.left = Math.floor(Math.random() * 1920) + 'px';
-		mince.style.top = Math.floor(Math.random() * 1040) + 'px';  //kdzy jen 500, tak nedoskoci doprava v obrayovce
+		mince.style.left = Math.floor(Math.random() * 500) + 'px';
+		mince.style.top = Math.floor(Math.random() * 500) + 'px';  
 		
 	}
-)
+	)
 }
-//SKORE - navysovani pri shode
 
-function Shoda()
+// A TADY UZ CHYTANI MINCE A VSE, CO S TIM SOUVISI:
+
+function PanacekPohyb(event) 
 {
-
-if ((pan.style.top = mince.style.top) && (pan.style.left = mince.style.left)) 
-	{
-		console.log('shoda');
-		skore = parseInt('#score') + 1; //toto nedela co by melo - proc? protoze v textu mam napsano 0. Ale neumim to prepsat na to, aby to aktvine bralo aktivni hodnotu
-		console.log('#score');  
-		let shoda = document.getElementById('mince');
-		shoda.play();
-		//tady je nutno i nastavit, aby se mince pregenrovala, ale jak jednoduse?
-		PolohaMince();
-	}
-}
-
-
-// toto budeš potřebovat později 
-/*
-if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-	// panacek a mince se prekryvaji
 	
-}
-*/    // .... tento vas priklad neumim apolikovat na to svoje, sla jsem jednodussi cestou, a proto mi to nevychazi
+	panacekX = parseInt(pan.style.left);
+	panacekY = parseInt(pan.style.top);
 
-function Vitezstvi() 
+	if (event.key === "ArrowLeft" && panacekX-vzdalenost>=0)
+	{
+	//	console.log('vlevo');
+		pan.style.left = panacekX -vzdalenost +"px";
+		pan.src='obrazky/panacek-vlevo.png';
+	
+	}else if (event.key === "ArrowRight" && panacekX+vzdalenost<limitX)
+	{
+	//	console.log('vpravo');
+		pan.style.left = panacekX +vzdalenost +"px";
+		pan.src='obrazky/panacek-vpravo.png';
+		
+	}else if (event.key === "ArrowUp" && panacekY-vzdalenost>=0)
+	{
+	//	console.log('nahoru');
+		pan.style.top = panacekY -vzdalenost +"px";
+		pan.src='obrazky/panacek-nahoru.png';
+	
+	}else if (event.key === "ArrowDown" && panacekY+vzdalenost<=limitY)
+	{
+		//console.log('dolu');
+		pan.style.top = panacekY +vzdalenost +"px";
+		pan.src='obrazky/panacek.png';
+	
+	}
+	Kolize();
+}
+
+function Kolize()
 {
-	if (skore = 5)
-	{	
-	let vitez = document.getElementById('fanfara');
-	vitez.play();
+	minceX = parseInt(mince.style.left);
+	minceY = parseInt(mince.style.top);
+	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+		document.getElementById('zvukmince').play();
+		console.log('prekryvani');  // dukaz, ze mame shodu :)
+		skore++;
+		document.querySelector("#score").innerHTML = skore;
+
+		//PolohaMince(); toto jsem zkousela tam dat, ALE nic to nedelalo. Asi neco s tim absolute part v puvodni funkci? Tak jsem vzala jen tu regeneraci polohy mince
+		mince.style.left = Math.floor(Math.random() * 500) + 'px';
+		mince.style.top = Math.floor(Math.random() * 500) + 'px'; 
 	}
 }
 
-//funkce Shoda i Vitezstvi jsou prozatim ciste teoreticke. Tak nejak bych si je predstavovala, ale zatim mi nefunguji.
+
+
+// Bonus Vitezstvi nakonec nemam, protoze mi podminka if (skore=5) zacala ZVYSOVAT skore o 5 po sebrani 1 mince. Tak nechavam byt, nemohla jsem na to prijit.
+
+//Holt muzeme hrat donekonecna :D 

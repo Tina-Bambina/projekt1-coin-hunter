@@ -19,9 +19,10 @@ body {
 	height: 100vh;
 	background-color: var(--pozadi);
 	background-repeat: repeat;
-	background-image: url('obrazky/pozadi/geometry.png');
+	background-image: url('obrazky/pozadi/hypnotize.png');
 
 	/*  vyzkoušej i jiná pozadí :)
+	'obrazky/pozadi/geometry.png'
 	background-image: url('obrazky/pozadi/round.png');
 )	background-image: url('obrazky/pozadi/whirlpool.png');
 	background-image: url('obrazky/pozadi/weather.png');
@@ -48,4 +49,10 @@ body {
 
 #panacek {
 	z-index: 1;
+}
+
+button {
+	
+	position:absolute;
+	left: 1700px;
 }
