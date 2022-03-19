@@ -40,6 +40,7 @@ function zobrazSkore()
 // 2 VYCHOZI FUNKCE PRO PANACKA A MINCI:
 function PanacekVychozi()
 {
+
 	window.addEventListener('load', () => {
 		pan.style.position = 'absolute';
 		pan.style.left = 0;
